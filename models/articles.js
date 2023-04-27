@@ -17,33 +17,39 @@ class Article extends Model {
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    author: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: false,
+    },
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
-    password: {
-      type: DataTypes.STRING,
+    date_created: {
+      type:DataTypes.DATE,
       allowNull: false,
-      validate: {
-        len: [8],
+      defaultValue: DataTypes.NOW
       },
+    article_id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        references: {
+          model: 'user',
+          key: 'id',
+        },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
-    }
-    }
-  );
-  
+    modelName: 'articles',
+    });
   module.exports = Article;
 
 

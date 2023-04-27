@@ -11,7 +11,7 @@ Comments.init(
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      commentAuthor: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -23,10 +23,10 @@ Comments.init(
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-      user_id: {
+      article_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'users',
+          model: 'articles',
           key: 'id',
         },
       },
@@ -40,3 +40,4 @@ Comments.init(
     }
   );
   
+  module.exports = Comments;
