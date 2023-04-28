@@ -2,14 +2,13 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-
-class Article extends Model {
-    checkPassword(loginPw) {
-      return bcrypt.compareSync(loginPw, this.password);
-    }
+class Articles extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
   }
+}
 
-  Article.init(
+  Articles.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -34,11 +33,10 @@ class Article extends Model {
     date_created: {
       type:DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
       },
-    article_id: {
+    user_id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
         references: {
           model: 'user',
           key: 'id',
@@ -50,7 +48,21 @@ class Article extends Model {
     underscored: true,
     modelName: 'articles',
     });
-  module.exports = Article;
+
+
+
+
+  module.exports = Articles;
+
+
+  
+
+
+
+
+
+
+
 
 
   

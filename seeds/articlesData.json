@@ -1,35 +1,31 @@
  [
     {
-      "id": 1,
+      
       "title": "Introduction to Artificial Intelligence",
       "author": "Jane Smith",
       "content": "Artificial Intelligence (AI) is a branch of computer science that deals with the creation of intelligent machines that can perform tasks without human intervention. It involves developing algorithms and computational models to enable machines to learn, reason, and problem-solve.",
-      "date_created": "2023-04-01T10:00:00Z",
-      "article_id": 1
+      "user_id": 1
     },
     {
-      "id": 2,
+  
       "title": "The Future of Renewable Energy",
       "author": "John Doe",
       "content": "Renewable energy is becoming an increasingly important part of the global energy mix. With the growing concerns about climate change and the depletion of fossil fuels, countries are investing in clean and sustainable energy sources such as solar, wind, and hydro power.",
-      "date_created": "2023-04-15T15:00:00Z",
-      "article_id": 2
+      "user_id": 2
     },
     {
-      "id": 3,
+
       "title": "Exploring the World of Cryptocurrencies",
       "author": "Alice Johnson",
       "content": "Cryptocurrencies, such as Bitcoin and Ethereum, are digital assets designed to work as a medium of exchange. They use cryptography to secure transactions, control the creation of new units, and verify the transfer of assets. Cryptocurrencies have gained popularity in recent years due to their decentralized nature and potential for financial innovation.",
-      "date_created": "2023-04-20T12:30:00Z",
-      "article_id": 3
+      "user_id": 3
     },
     {
-      "id": 4,   
+ 
       "title": "The Benefits of a Plant-Based Diet",    
       "author": "Bob Brown",    
-      "content": "A plant-based diet, which focuses on consuming whole, plant-derived foods, has been associated with numerous health benefits. These include weight loss, improved heart health, and a lower risk of chronic diseases. In addition to health benefits, a plant-based diet is also more environmentally sustainable than a diet high in animal products.",   
-      "date_created": "2023-04-25T09:00:00Z",    
-      "article_id": 4 
+      "content": "A plant-based diet, which focuses on consuming whole, plant-derived foods, has been associated with numerous health benefits. These include weight loss, improved heart health, and a lower risk of chronic diseases. In addition to health benefits, a plant-based diet is also more environmentally sustainable than a diet high in animal products.",
+      "user_id": 4
     }
       
       

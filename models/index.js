@@ -2,6 +2,8 @@ const Users = require('./users');
 const Articles = require('./articles');
 const Comments = require('./comments');
 
+
+
 Users.hasMany(Articles, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
@@ -15,3 +17,12 @@ Articles.hasMany(Comments, {
 Comments.belongsTo(Articles, {
     foreignKey: 'article_id', 
 });
+
+
+
+
+module.exports = {
+    // ... your other model exports,
+    Users, Articles, Comments
+  };
+  
