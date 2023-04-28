@@ -42,6 +42,8 @@ class Articles extends Model {
           key: 'id',
         },
     },
+  },
+  {
     sequelize,
     timestamps: false,
     freezeTableName: true,
