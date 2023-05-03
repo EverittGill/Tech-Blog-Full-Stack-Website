@@ -19,59 +19,89 @@ router.get('/', async (req, res) => {
       logged_in: req.session.logged_in 
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
+// get one article and comments
 router.get('/articles/:id', async (req, res) => {
   try {
+    // Get all articles and JOIN with user data
     const articlesData = await Articles.findByPk(req.params.id, {
-      include: [
-        {
-          model: Users,
-          attributes: ['name'],
-        },
+      include: [{ model: Comments, include: [Users], Users},
       ],
     });
+    const articles = articlesData.get({ plain: true });
+    // add is_author property to article data to use in handlebars
 
-    const Articles = articlesData.get({ plain: true });
+    // Add is_author property to each comment object
+    articles.comments.forEach(comment => {
+      comment.is_author = req.session.user_id === comment.user_id;
+    });
 
-    res.render('', {
-      ...project,
-      logged_in: req.session.logged_in
+    // Serialize data so the template can read it
+    res.render('single-article', { 
+      articles, 
+      logged_in: req.session.logged_in 
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
+
+
+
+
+
+
 
 // Use withAuth middleware to prevent access to route
-router.get('/articles', withAuth, async (req, res) => {
+router.get('/edit-article/:id', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+    const articlesData = await Articles.findByPk(req.params.id, {
+      include: Users,
     });
+    const articles = articlesData.get({ plain: true });
 
-    const user = userData.get({ plain: true });
-
-    res.render('profile', {
-      ...user,
-      logged_in: true
-    });
+    if(articles.user_id !== req.session.user_id) {
+      res.status(403).json({ message: 'You are not the author so you cannot edit this article.' });
+    } else {
+      res.render('edit-article', {
+        articles,
+        logged_in: req.session.logged_in
+      });
+    }
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
+
+
+// need get route for homepage
+// need get route for new article
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/dashboard');
     return;
   }
-
   res.render('login');
 });
 
