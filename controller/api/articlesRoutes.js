@@ -1,14 +1,17 @@
+
+ 
+
 const router = require('express').Router();
-const Articles = require('../../models/Articles');
-const withAuth = require('../../utils/auth.js')
-router.get('/', async (req, res) => {
-    try {
-        const articlesData = await Articles.findAll();
-        res.status(200).json(articlesData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+const withAuth = require('../../utils/auth.js');
+const { Articles } = require('../../models');
+// router.get('/', async (req, res) => {
+//     try {
+//         const articlesData = await Articles.findAll();
+//         res.status(200).json(articlesData);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.get('/:id', async (req, res) => {
     try {
@@ -20,7 +23,7 @@ router.get('/:id', async (req, res) => {
 } );
 
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newArticle = await Articles.create({
             title: req.body.title,

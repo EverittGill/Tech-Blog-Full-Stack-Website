@@ -1,8 +1,7 @@
-// comments will need these routes
-// post, delete, get by id, put
 
+const router = require("express").Router();
 const withAuth = require("../../utils/auth");
-const router = require("./articlesRoutes");
+const { Comment } = require("../../models");
 
 router.post('/', withAuth, async (req, res) => {
     try {
