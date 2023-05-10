@@ -1,20 +1,20 @@
-const Users = require('./users');
-const Articles = require('./articles');
-const Comments = require('./comments');
+const User = require('./user');
+const Article = require('./article');
+const Comment = require('./comment');
 
 
 
-Users.hasMany(Articles, {
+User.hasMany(Article, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 
-Articles.hasMany(Comments, {
+Article.hasMany(Comment, {
     foreignKey: 'article_id',
     onDelete: 'CASCADE'
   });
 
-Comments.belongsTo(Articles, {
+Comment.belongsTo(Article, {
     foreignKey: 'article_id', 
 });
 
@@ -23,6 +23,6 @@ Comments.belongsTo(Articles, {
 
 module.exports = {
     // ... your other model exports,
-    Users, Articles, Comments
+    User, Article, Comment
   };
   
