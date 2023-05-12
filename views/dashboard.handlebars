@@ -1,11 +1,10 @@
 {{!-- Dashboard.handlebars - I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post --}}
 
 <h1>Dashboard</h1>
-    <button id="logout">Logout</button>
-    <button id="new-blog">New Blog</button>
+    <button id="new-blog">New Article</button>
     <button id="new-comment">New Comment</button>
     <div id="blog-container">
-        {{#each articles}}
+        {{#each article}}
             <div class="blog">
                 <h2>{{title}}</h2>
                 <p>{{content}}</p>
