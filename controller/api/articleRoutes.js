@@ -3,7 +3,7 @@
 
 const router = require('express').Router();
 const withAuth = require('../../utils/auth.js');
-const { Articles } = require('../../models');
+const { Article } = require('../../models');
 // router.get('/', async (req, res) => {
 //     try {
 //         const articlesData = await Articles.findAll();
@@ -15,8 +15,8 @@ const { Articles } = require('../../models');
 
 router.get('/:id', async (req, res) => {
     try {
-        const articlesData = await Articles.findByPk(req.params.id);
-        res.status(200).json(articlesData);
+        const articleData = await Article.findByPk(req.params.id);
+        res.status(200).json(articleData);
     } catch (err) {
         console.log(err);   
         res.status(500).json(err);
@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
         try {
-            const articleData = await Articles.create({
+            const articleData = await Article.create({
                 ...req.body,
                 user_id: req.session.user_id,
             });
@@ -53,16 +53,16 @@ router.post('/', withAuth, async (req, res) => {
 router.put('/:id', async (req, res) => {  
     // if the user is the author of the article, then they can update it
     try {   
-        const articlesData = await Articles.update(req.body, {
+        const articleData = await Article.update(req.body, {
             where: {    
                 id: req.params.id,
             },
         }); 
-        if (!articlesData) {
+        if (!articleData) {
             res.status(404).json({ message: 'No articles with this id!' });
             return;
         }       
-        res.status(200).json(articlesData);
+        res.status(200).json(articleData);
     } catch (err) {
         res.status(500).json(err);
     } 
@@ -79,16 +79,16 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const articlesData = await Articles.destroy({
+        const articleData = await Article.destroy({
             where: {
                 id: req.params.id,
             },
         });
-        if (!articlesData) {
+        if (!articleData) {
             res.status(404).json({ message: 'No articles with this id!' });
             return;
         }
-        res.status(200).json(articlesData);
+        res.status(200).json(articleData);
     } catch (err) {
         res.status(500).json(err);
     }

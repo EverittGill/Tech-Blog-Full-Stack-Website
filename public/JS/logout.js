@@ -7,11 +7,12 @@ const logout = async () => {
   
     // once the response is received, redirect user to the login page
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/login');
     } else {
       alert(response.statusText);
     }
   }    
+
 
 
   document

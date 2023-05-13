@@ -3,16 +3,17 @@ const { Article, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
+  console.log(req.session)
   try {
     // Get all articles and JOIN with user data
     const articlesData = await Article.findAll({
-      include: [{ model: Comment, include: [User], User},
+      include: [{ model: Comment, include: [{ model: User}] },
       ],
     });
 
     // Serialize data so the template can read it
     const article = articlesData.map((article) => article.get({ plain: true }));
-
+    console.log(article)
     res.render('homepage', { 
       logged_in: req.session.logged_in,
       article
@@ -86,7 +87,8 @@ router.get('/homepage', async (req, res) => {
 
 // need get route for dashboard
 router.get('/dashboard', async (req, res) => {
-  res.render('dashboard');
+  console.log(req.session)
+  res.render('dashboard', {logged_in: req.session.logged_in});
 });
 
 
