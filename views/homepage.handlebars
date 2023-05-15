@@ -7,20 +7,23 @@
 
 
 <!-- Loop over each object in the projects array -->
-{{#each article }}  
+{{#each article}}  
 {{!-- as |article| --}}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       {{!-- {{{get_emoji}}} --}}
-      <a href="/articleData/{{Article.id}}">{{article.title}}</a>
+      {{!-- <a href="/articleData/{{article.id}}">{{article.title}}</a> --}}
+      <a href="/article/{{id}}">
+        <h3>{{title}}</h3>
+        <p>{{content}}</p>
+        <p>Written by {{author}}</p>
     </h2>
     <p>
       <span for="img" aria-label="money">💲</span>
       <!-- Pass needed_funding value to the helper function -->
      
-      needed!
     </p>
     <p>Created by {{article.author}} on {{ article.date_created}}</p>
   </div>
@@ -33,4 +36,4 @@
 {{/each}}
 
 
-<script src="./JS/login.js"></script>
+<script src="/JS/login.js"></script>

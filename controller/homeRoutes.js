@@ -87,8 +87,10 @@ router.get('/homepage', async (req, res) => {
 
 // need get route for dashboard
 router.get('/dashboard', async (req, res) => {
-  console.log(req.session)
-  res.render('dashboard', {logged_in: req.session.logged_in});
+  let articles = await Article.findAll()
+  articles = articles.map((article) => article.get({ plain: true }))
+  console.log(articles)
+  res.render('dashboard', {logged_in: req.session.logged_in, articles});
 });
 
 
