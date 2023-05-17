@@ -41,9 +41,13 @@ router.post('/', withAuth, async (req, res) => {
         try {
             const articleData = await Article.create({
                 ...req.body,
-                user_id: req.session.user_id,
+                user_id: req.session.user_id
             });
-            res.status(200).json(articleData);
+            console.log(articleData)
+            const article = articleData.get({ plain: true });
+            console.log(article);
+            res.redirect('/dashboard');
+            res.status(200).json(article);
         } catch (err) {
             res.status(400).json(err);
         }   

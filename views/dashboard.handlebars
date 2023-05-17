@@ -1,16 +1,30 @@
 {{!-- Dashboard.handlebars - I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post --}}
 
-<h1>Dashboard</h1>
+<h1>Your Dashboard {{user.name}}</h1>
     <a href="/new-article" id="new-article">New Article</a>
     <button id="new-comment">New Comment</button>
     <div id="blog-container">
-        {{#each articles as |article|}}
+        <h3>Your Posts</h2>
+      {{#if user.article.length}}
+      {{#each user.article}}
+      <a  href="/edit-article/{{id}}">
+
+        {{!-- {{#each articles as |article|}}
             <div class="blog">
                 <h2>{{article.title}}</h2>
                 <p>{{article.content}}</p>
                 <p>{{article.date_created}}</p>
                 <button class="delete-blog" data-id="{{article.id}}">Delete</button>
                 <button class="update-blog" data-id="{{article.id}}">Update</button>
-            </div>
-        {{/each}}    
+            </div> --}}
+
+
+        {{/each}}   
+        {{else}}
+        <h4>You haven't written anything yet. When you do it will be posted here for you to view and update</h4> 
+        {{/if}}
     </div>
+
+
+
+{{!-- <h1>Your Dashboard {{user.name}}</h1> --}}

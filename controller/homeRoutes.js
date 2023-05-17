@@ -86,12 +86,33 @@ router.get('/homepage', async (req, res) => {
 });
 
 // need get route for dashboard
+// the get route needs to render the name from the user model and all the articles that were written by that user
+
 router.get('/dashboard', async (req, res) => {
-  let articles = await Article.findAll()
-  articles = articles.map((article) => article.get({ plain: true }))
-  console.log(articles)
-  res.render('dashboard', {logged_in: req.session.logged_in, articles});
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{model: Article }, { model: Comment, include: [Article] }]
+    });
+
+    const user = userData.get({ plain: true });
+    res.render('dashboard', { 
+      user, 
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
+
+
+
+// router.get('/dashboard', async (req, res) => {
+//   let articles = await Article.findAll()
+//   articles = articles.map((article) => article.get({ plain: true }))
+//   console.log(articles)
+//   res.render('dashboard', {logged_in: req.session.logged_in, articles});
+// });
 
 
 // need get route for new article

@@ -43,6 +43,10 @@
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
+
+      {{#if logged_in}}
+      <script src="/JS/logout.js"></script>
+      {{/if}}
     </main>
     <footer>
       
