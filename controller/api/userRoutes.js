@@ -7,10 +7,12 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+            req.session.name = userData.name;
             res.status(200).json(userData);
             console.log(req.session.user_id)
             console.log(req.session)
         });
+      
     } catch (err) {
         res.status(400).json(err);
     }
@@ -34,6 +36,7 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
+        req.session.name = userData.name;
         console.log(req.session.logged_in);
         res.redirect('/dashboard');
       });
