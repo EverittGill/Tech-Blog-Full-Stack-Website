@@ -8,12 +8,12 @@
       {{#if user.articles.length}}
       {{#each user.articles}}
         <hr>
+          <a  href="/edit-article/{{id}}">
            <h5>{{title}}</h5>
+            </a>
            <p>{{content}}</p>
-           <p>{{author}}</p>
-           <a  href="/edit-article/{{id}}">
-                <button id="edit-button">Edit This Article</button>
-           </a>
+           <p>{{date_created}}</p>
+    
         {{!-- {{#each articles as |article|}}
             <div class="blog">
                 <h2>{{article.title}}</h2>

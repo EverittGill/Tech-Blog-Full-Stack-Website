@@ -63,13 +63,13 @@ router.get('/edit-article/:id', withAuth, async (req, res) => {
     const articleData = await Article.findByPk(req.params.id, {
       include: User,
     });
-    const articles = articleData.get({ plain: true });
-
+    const article = articleData.get({ plain: true });
+    console.log(article)
     if(article.user_id !== req.session.user_id) {
       res.status(403).json({ message: 'You are not the author so you cannot edit this article.' });
     } else {
       res.render('edit-article', {
-        articles,
+        article,
         logged_in: req.session.logged_in
       });
     }

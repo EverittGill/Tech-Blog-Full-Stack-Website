@@ -13,7 +13,11 @@ Article.hasMany(Comment, {
     foreignKey: 'article_id',
     onDelete: 'CASCADE'
   });
-
+// new one
+Article.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+  
 Comment.belongsTo(Article, {
     foreignKey: 'article_id', 
 });

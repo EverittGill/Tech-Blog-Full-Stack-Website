@@ -1,0 +1,10 @@
+{{!-- this page is for editing articles that already exist.
+It needs to have a text box containing the article as well as update and delete buttons --}}
+
+
+<h1>Edit Article</h1>
+<form action="/edit-article/{{article.id}}" method="POST">
+    <input type="text" name="title" value="{{article.title}}">
+    <textarea name="content" id="" cols="30" rows="10">{{article.content}}</textarea>
+    <button type="submit">Update</button>
+    <button type="submit" formaction="/delete-article/{{article.id}}">Delete</button>

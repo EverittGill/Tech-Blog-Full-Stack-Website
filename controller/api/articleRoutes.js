@@ -41,7 +41,7 @@ router.post('/', withAuth, async (req, res) => {
         try {
             const articleData = await Article.create({
                 ...req.body,
-                author: req.session.name,
+                // author: req.session.name,
                 user_id: req.session.user_id
             });
             console.log(articleData)
@@ -61,6 +61,8 @@ router.put('/:id', async (req, res) => {
         const articleData = await Article.update(req.body, {
             where: {    
                 id: req.params.id,
+                content: req.body.content,
+                title: req.body.title,
             },
         }); 
         if (!articleData) {
