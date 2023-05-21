@@ -84,13 +84,15 @@ router.put('/:id', async (req, res) => {
 
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const articleData = await Article.destroy({
             where: {
                 id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
+        console.log(articleData)
         if (!articleData) {
             res.status(404).json({ message: 'No articles with this id!' });
             return;
