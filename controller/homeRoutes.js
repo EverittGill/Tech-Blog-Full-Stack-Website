@@ -152,7 +152,21 @@ module.exports = router;
 
 
 
-
+router.get('/comment/id', withAuth, async (req, res) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+      let articles = await Article.findAll({
+        where: {
+          id: req.params.id,
+        },
+        include: [{ model: Comment, include: [{model: User}]}]
+      })
+  articles = articles.map((article) => article.get({ plain: true }))
+  console.log(articles)
+  res.render('comment', {logged_in: req.session.logged_in, articles});
+})
 
 
 

@@ -55,24 +55,24 @@ router.post('/', withAuth, async (req, res) => {
     });
 
 
-router.put('/:id', async (req, res) => {  
+router.put('/:id', withAuth, async (req, res) => {  
     // if the user is the author of the article, then they can update it
-    try {   
+    //try {   
+        console.log(req.params.id)
         const articleData = await Article.update(req.body, {
             where: {    
-                id: req.params.id,
-                content: req.body.content,
-                title: req.body.title,
+            id: req.params.id,
             },
         }); 
-        if (!articleData) {
+        console.log(articleData, "articleData on PUT route is hitting")
+        if (!articleData[0]) {
             res.status(404).json({ message: 'No articles with this id!' });
             return;
         }       
         res.status(200).json(articleData);
-    } catch (err) {
-        res.status(500).json(err);
-    } 
+    // } catch (err) {
+    //     res.status(500).json(err);
+    // } 
 });
 
 
@@ -92,7 +92,7 @@ router.delete('/:id', withAuth, async (req, res) => {
                 user_id: req.session.user_id,
             },
         });
-        console.log(articleData)
+        console.log(articleData, "article data on delete route is hitting")
         if (!articleData) {
             res.status(404).json({ message: 'No articles with this id!' });
             return;

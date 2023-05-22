@@ -23,7 +23,7 @@ Comment.init(
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-      comment_id: {
+      article_id: {
         type: DataTypes.INTEGER,
         references: {
           model: 'article',

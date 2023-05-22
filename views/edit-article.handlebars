@@ -3,18 +3,13 @@ It needs to have a text box containing the article as well as update and delete 
 
 
 <h1>Edit Article</h1>
-{{!-- <form action="/edit-article/{{article.id}}" method="POST">
-    <input type="text" name="title" value="{{article.title}}">
-    <textarea name="content" id="" cols="30" rows="10">{{article.content}}</textarea>
-    <button type="submit">Update</button>
-    <button type="submit" formaction="/delete-article/{{article.id}}">Delete</button> --}}
 
-<form>
-    <input type="text" name="title" value="{{article.title}}">
-    <textarea name="content" id="updateTextArea">{{article.content}}</textarea>
-    <button type="submit" id="updateButton">Update</button>
-    <button type="submit" data-id="{{article.id}}" class="delete-article-btn" onclick="delButtonHandler(event, {{article.id}})">Delete</button>
 
-</form>
+    <input type="text" class="article-title" name="title" value="{{article.title}}">
+    <textarea name="content" class="article-content" id="updateTextArea">{{article.content}}</textarea>
+    <button  data-id="{{article.id}}" class="update-article-btn">Update</button>
+    <button  data-id="{{article.id}}" class="delete-article-btn">Delete</button>
+
+
 
 <script src="/JS/updateAndDelete.js"></script>

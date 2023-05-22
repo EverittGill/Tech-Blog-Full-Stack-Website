@@ -1,7 +1,6 @@
-{{!-- Dashboard.handlebars - I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post --}}
 
-<h1>Your Dashboard {{user.name}}</h1>
-    <a href="/new-article" id="new-article">New Article</a>
+<h1>new comment {{user.name}}</h1>
+    <a href="/new-comment" id="new-comment">New comment</a>
     <button id="new-comment">New Comment</button>
     <div id="blog-container">
         <h3>Your Posts</h3>
@@ -21,7 +20,3 @@
         <h4>You haven't written anything yet. When you do it will be posted here for you to view and update</h4> 
         {{/if}}
     </div>
-
-
-
-{{!-- <h1>Your Dashboard {{user.name}}</h1> --}}
