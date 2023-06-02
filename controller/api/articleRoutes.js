@@ -14,10 +14,17 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+// a route that gets a single article by id that was clicked on in the homepage
+
+// router.get('/single-article/:id', async (req, res) => {
+
+
+
+router.get('/single-article/:id', async (req, res) => {
     try {
         const articlesData = await Article.findByPk(req.params.id);
-        res.status(200).json(articlesData);
+        // res.status(200).json(articlesData);
+        res.render('single-article', { articlesData });
     } catch (err) {
         console.log(err);   
         res.status(500).json(err);
