@@ -39,7 +39,7 @@ router.post('/', withAuth, async (req, res) => {
         try {
             const articleData = await Article.create({
                 ...req.body,
-                // author: req.session.name,
+                author: req.session.name,
                 user_id: req.session.user_id,
                
             });

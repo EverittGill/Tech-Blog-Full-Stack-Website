@@ -36,7 +36,7 @@ router.get('/article/:id', async (req, res) => {
     // add is_author property to article data to use in handlebars
 
     // Add is_author property to each comment object
-    article.comments.forEach(comment => {
+    articles.comments.forEach(comment => {
       comment.is_author = req.session.user_id === comment.user_id;
     });
 
