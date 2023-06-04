@@ -1,26 +1,33 @@
-{{!-- <div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount needed_funding}}</span>
-    needed
-  </p>
-  <p>
-    <button class="btn btn-primary">Fund this Project!</button>
-  </p>
-</div> --}}
-
-
-{{!-- Purpose: this page is for displaying a single article that was clicked on from the homepage. --}}
-{{!-- Purpose: this page will need to display the article and have a textfield to input a comment that is attached to that article as well as a button to add the comment --}}
+<h1>Read and add comments</h1>
+<br>
+<br>
+<br>
 
  <div class="text-center">
   <h2>{{articles.title}}</h2>
   <p>{{articles.content}}</p>
   <p>Written by {{articles.author}}</p>
+  <p>Created on {{articles.date_created}}</p>
 </div> 
+<br>
+<br>
+<div class="text-center">
+  <h2>Comments</h2>
+  {{#each articles.comment}}
+  <p>{{articles.comment.description}}</p>
+  {{!-- <p>Written by {{this.author}}</p> --}}
+  {{/each}}
+  {{!-- <p>{{comment.description}}</p>
+  <p>Written by {{this.author}}</p> --}}
+  {{!-- {{/each}} --}}
+</div>
 
-<p>single-article page is rendering</p>
+<br>
+<br>
+{{!-- add a field to post a new comment to the current article --}}
+
+<div class="new comment">New comment</div>
+<br>
+    <textarea name="comment" class="article-comment" id="updateCommentArea">{{comment.description}}</textarea>
+    <button type="submit" data-id="{{comment.id}}" class="post-comment-btn">submit</button>
+    
