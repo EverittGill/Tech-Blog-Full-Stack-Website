@@ -13,13 +13,13 @@
 <br>
 <div class="text-center">
   <h2>Comments</h2>
-  {{#each articles.comment}}
-  <p>{{articles.comment.description}}</p>
-  {{!-- <p>Written by {{this.author}}</p> --}}
+  {{!-- display each comment for this specific article --}}
+{{#each articles.comments}}
+<div>
+  <p>{{description}}</p>
   {{/each}}
-  {{!-- <p>{{comment.description}}</p>
-  <p>Written by {{this.author}}</p> --}}
-  {{!-- {{/each}} --}}
+</div>
+ 
 </div>
 
 <br>

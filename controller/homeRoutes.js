@@ -29,12 +29,13 @@ router.get('/article/:id', async (req, res) => {
   try {
     // Get all articles and JOIN with user data
     const articleData = await Article.findByPk(req.params.id, {
-      include: [{ model: Comment, include: [User], User},
-      ],
+      // include: [{ model: Comment, include: [User], User},
+      include: [{ model: Comment, include: [User] }, User],
+      
     });
     const articles = articleData.get({ plain: true });
     // add is_author property to article data to use in handlebars
-
+    console.log(articles.comments)
     // Add is_author property to each comment object
     articles.comments.forEach(comment => {
       comment.is_author = req.session.user_id === comment.user_id;
