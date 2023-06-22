@@ -28,5 +28,5 @@ const createNewComment = async (event) => {
 
 
 document
-    .querySelector('.new-article-form')
+    .querySelector('.new-comment-form')
     .addEventListener('submit', createNewArticle)

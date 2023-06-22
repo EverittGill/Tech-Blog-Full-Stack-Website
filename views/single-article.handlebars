@@ -28,6 +28,18 @@
 
 <div class="new comment">New comment</div>
 <br>
-    <textarea name="comment" class="article-comment" id="updateCommentArea">{{comment.description}}</textarea>
-    <button type="submit" data-id="{{comment.id}}" class="post-comment-btn">submit</button>
+    {{!-- <textarea name="comment" class="article-comment" id="updateCommentArea">{{comment.description}}</textarea>
+    <button type="submit" data-id="{{comment.id}}" class="post-comment-btn">submit</button> --}}
+        <form class="new-comment-form">
+        {{!-- <div class="form-group"> --}}
+            {{!-- <label for="title">Title:</label> --}}
+            {{!-- <input type="text" id="title" name="title" required> --}}
+        {{!-- </div> --}}
+        <div class="form-group">
+            <label for="content">Comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
     
+    <script src="/JS/newComment.js"></script>
