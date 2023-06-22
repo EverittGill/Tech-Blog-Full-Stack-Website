@@ -51,10 +51,12 @@ const loginFormHandler = async (event) => {
             alert(response.statusText);
         }
     };
-    
-    document
-        .querySelector('.signup-form')
-        .addEventListener('submit', signupFormHandler);
+
+
+        const signupForm = document.querySelector('.signup-form');
+        console.log(signupForm)
+        signupForm.addEventListener('submit', signupFormHandler);
+
     
 
 
