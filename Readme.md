@@ -4,9 +4,9 @@
 
 Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
-- I was motivated to build this out of my
-- I built this to see how difficult it would
-- What problem does it solve?
+- I was motivated to build this out of my desire to have a blogging site that was simple and easy to use
+- I built this to learn how use Handlebars and write API routes
+- This app is one step towards solving the problem of reddit turning into garbage. Maybe something like this will take its place some day and this is my first step towards bringing that into the world
 - What did you learn?
 
 ## Table of Contents (Optional)

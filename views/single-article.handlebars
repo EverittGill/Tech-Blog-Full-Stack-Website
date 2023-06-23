@@ -14,10 +14,12 @@
 <div class="text-center">
   <h2>Comments</h2>
   {{!-- display each comment for this specific article --}}
-{{#each comment}}
+{{#each articles.comments}}
 <div>
   <p>{{description}}</p>
   <p>Written by {{author}}</p>
+  <p>Created on {{date_created}}</p>
+  <hr
   {{/each}}
 </div>
  
@@ -31,7 +33,7 @@
 <br>
     {{!-- <textarea name="comment" class="article-comment" id="updateCommentArea">{{comment.description}}</textarea>
     <button type="submit" data-id="{{comment.id}}" class="post-comment-btn">submit</button> --}}
-        <form class="new-comment-form">
+        <form class="new-comment-form" data-id={{articles.id}}>
         {{!-- <div class="form-group"> --}}
             {{!-- <label for="title">Title:</label> --}}
             {{!-- <input type="text" id="title" name="title" required> --}}

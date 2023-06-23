@@ -4,7 +4,7 @@ const createNewComment = async (event) => {
     const article_id = event.target.dataset.id;
     const description = document.querySelector('.comment-content').value.trim();
     console.log(article_id, description)
-    const response = await fetch('/api/article/', {
+    const response = await fetch('/api/comment/', {
         method: 'POST',
         body: JSON.stringify({ 
             article_id: article_id,
@@ -12,10 +12,10 @@ const createNewComment = async (event) => {
         }),
         headers: { 'Content-Type': 'application/json' },
     });
-
-    if (response.ok) {
-        console.log('Article successfully created');
-        document.location.replace('/dashboard');
+    // console.log(response)
+    if (response) {
+        console.log('comment successfully created');
+        document.location.reload()
     } else {
         alert(response.statusText);
     }
@@ -29,4 +29,4 @@ const createNewComment = async (event) => {
 
 document
     .querySelector('.new-comment-form')
-    .addEventListener('submit', createNewArticle)
+    .addEventListener('submit', createNewComment)
