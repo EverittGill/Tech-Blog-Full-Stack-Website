@@ -2,7 +2,7 @@
 
 <h1>Your Dashboard {{user.name}}</h1>
     <a href="/new-article" id="new-article">New Article</a>
-    <button id="new-comment">New Comment</button>
+    {{!-- <button id="new-comment">New Comment</button> --}}
     <div id="blog-container">
         <h3>Your Posts</h3>
       {{#if user.articles.length}}

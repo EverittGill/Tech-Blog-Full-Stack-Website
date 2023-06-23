@@ -14,9 +14,10 @@
 <div class="text-center">
   <h2>Comments</h2>
   {{!-- display each comment for this specific article --}}
-{{#each articles.comments}}
+{{#each comment}}
 <div>
   <p>{{description}}</p>
+  <p>Written by {{author}}</p>
   {{/each}}
 </div>
  
@@ -26,7 +27,7 @@
 <br>
 {{!-- add a field to post a new comment to the current article --}}
 
-<div class="new comment">New comment</div>
+<div class="new comment">Add a new comment</div>
 <br>
     {{!-- <textarea name="comment" class="article-comment" id="updateCommentArea">{{comment.description}}</textarea>
     <button type="submit" data-id="{{comment.id}}" class="post-comment-btn">submit</button> --}}
@@ -35,10 +36,10 @@
             {{!-- <label for="title">Title:</label> --}}
             {{!-- <input type="text" id="title" name="title" required> --}}
         {{!-- </div> --}}
-        <div class="form-group">
+        {{!-- <div class="form-group"> --}}
             <label for="content">Comment:</label>
-            <textarea id="comment" name="comment" required></textarea>
-        </div>
+            <textarea id="comment" class="comment-content" name="comment" required></textarea>
+        {{!-- </div> --}}
         <button type="submit">Submit</button>
     </form>
     
